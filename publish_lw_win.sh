@@ -3,9 +3,8 @@
 set -e
 cd "$(dirname "$0")"
 
-if [ "$#" -ne 2 ]; then
-  echo "Usage: publish_lw_win.sh <version> <setup_file_url>" >&2
-  echo "           (for example: └ 97.0-2  └ https://gitlab.com/(...)-setup.exe)" >&2
+if [ "$#" -ne 0 ]; then
+  echo "Usage: publish_lw_win.sh" >&2
   exit 1
 fi
 
@@ -78,9 +77,19 @@ gh_request() {
   echo "$response"
 }
 
-export version="$(echo "$1" | sed 's/v//g')"
-export file="$2"
+echo
+echo "-> Fetching latest version"
+releases=$(curl -sf https://gitlab.com/api/v4/projects/13852981/releases)
+export version="$(echo "$releases" | jq -r '.[0].tag_name' | sed 's/v//g')"
+export file="$(echo "$releases" | jq -r '.[0].assets.links | .[] | select(.name | endswith("setup.exe")) | .url')"
+echo "The latest version is v$version. The installer is located at:"
+echo "$file"
+read -p "Do you want to publish v$version? [Y|n] " yn
+case ${yn:0:1} in
+[Nn]*) exit ;;
+esac
 
+echo
 echo
 echo "-> Calculating checksum"
 tmpdir=$(mktemp -d)
