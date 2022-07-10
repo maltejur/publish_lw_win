@@ -1,3 +1,5 @@
+yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.1.0.schema.json
+
 PackageIdentifier: LibreWolf.LibreWolf
 PackageVersion: ${version}
 MinimumOSVersion: 10.0.0.0
@@ -17,11 +19,11 @@ Dependencies:
       MinimumVersion: 14.28.29913.0
 Installers:
   - InstallerLocale: en-US
-    Architecture: x86
+    Architecture: x64
     InstallerType: nullsoft
     Scope: machine
-    InstallerUrl: "${file}"
-    InstallerSha256: "${checksum}"
+    InstallerUrl: ${file}
+    InstallerSha256: ${checksum}
     UpgradeBehavior: install
 ManifestType: installer
-ManifestVersion: 1.0.0
+ManifestVersion: 1.1.0

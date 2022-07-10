@@ -1,0 +1,13 @@
+{
+  "yaml.schemas": {
+    "https://aka.ms/winget-manifest.installer.1.1.0.schema.json": [
+      "LibreWolf.LibreWolf.installer.yaml.in"
+    ],
+    "https://aka.ms/winget-manifest.defaultLocale.1.1.0.schema.json": [
+      "LibreWolf.LibreWolf.locale.en-US.yaml.in"
+    ],
+    "https://aka.ms/winget-manifest.version.1.1.0.schema.json": [
+      "LibreWolf.LibreWolf.yaml"
+    ]
+  }
+}
