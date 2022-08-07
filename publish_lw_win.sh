@@ -168,9 +168,9 @@ fi
 )
 wingetdir="$clonedir/manifests/l/LibreWolf/LibreWolf/$version"
 mkdir "$wingetdir"
-envsubst <winget/LibreWolf.LibreWolf.installer.yaml.in >$wingetdir/LibreWolf.LibreWolf.installer.yaml
-envsubst <winget/LibreWolf.LibreWolf.locale.en-US.yaml.in >$wingetdir/LibreWolf.LibreWolf.locale.en-US.yaml
-envsubst <winget/LibreWolf.LibreWolf.yaml.in >$wingetdir/LibreWolf.LibreWolf.yaml
+envsubst '$version $file $checksum' <winget/LibreWolf.LibreWolf.installer.yaml.in >$wingetdir/LibreWolf.LibreWolf.installer.yaml
+envsubst '$version $file $checksum' <winget/LibreWolf.LibreWolf.locale.en-US.yaml.in >$wingetdir/LibreWolf.LibreWolf.locale.en-US.yaml
+envsubst '$version $file $checksum' <winget/LibreWolf.LibreWolf.yaml.in >$wingetdir/LibreWolf.LibreWolf.yaml
 (
   cd "$clonedir"
   git add .
