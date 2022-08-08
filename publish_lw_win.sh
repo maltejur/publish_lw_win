@@ -123,8 +123,8 @@ export choco_version="$ver$(echo $(for i in $(seq $(echo "$ver" | tr -cd '.' | w
 echo "v$version -> v$choco_version"
 tmpdir=$(mktemp -d)
 mkdir -p "$tmpdir/tools"
-envsubst <choco/librewolf.nuspec.in >$tmpdir/librewolf.nuspec
-envsubst <choco/tools/chocolateyinstall.ps1.in >$tmpdir/tools/chocolateyinstall.ps1
+envsubst '$choco_version $file $checksum' <choco/librewolf.nuspec.in >$tmpdir/librewolf.nuspec
+envsubst '$choco_version $file $checksum' <choco/tools/chocolateyinstall.ps1.in >$tmpdir/tools/chocolateyinstall.ps1
 cp choco/tools/chocolateyuninstall.ps1 $tmpdir/tools
 # If we are on windows we can use choco directly, else use a docker image
 if command -v choco; then

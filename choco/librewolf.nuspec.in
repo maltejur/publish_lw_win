@@ -37,6 +37,6 @@ For more details read the full [feature list](https://librewolf.net/docs/feature
     </dependencies>
   </metadata>
   <files>
-    <file src="tools\**" target="tools" />
+    <file src="tools/**" target="tools" />
   </files>
 </package>
